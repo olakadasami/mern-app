@@ -13,6 +13,15 @@ const app = express();
 // connect db
 connectDB();
 
+app.use(express.json())
+
+// middleware
+app.use((req, res, next) => {
+    console.log(req.method, 'request made')
+    console.log(req.path)
+    next();
+}) 
+
 // workout routing
 app.use('/api/workouts', workoutRoutes);
 

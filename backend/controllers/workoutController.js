@@ -1,12 +1,24 @@
+const { response } = require('express')
 const Workout = require('../models/workoutModel')
 
 
 // @desc get all workouts
 // @method GET
 // @route '/', Private
-const AllWorkouts = (req, res) => {
+const AllWorkouts = async (req, res) => {
 
-    res.json({message: "All workouts"})
+
+    try {
+        const workouts = await Workout.find()
+
+        
+
+        res.json(workouts);
+    } catch (err) {   
+        res.status(400).json({error: err.message})
+    }
+   
+   
     
 }
 
@@ -14,9 +26,18 @@ const AllWorkouts = (req, res) => {
 // @desc create a workout
 // @method POST
 // @route '/', Private
-const CreateWorkout = (req, res) => {
+const CreateWorkout = async (req, res) => {
 
-    res.json({message: "new workout created"})
+    const { title, load, reps } = req.body;
+
+    try {
+
+        const workout = await Workout.create({title, load, reps })
+        res.status(200).json(workout)
+        
+    } catch (err) {
+        res.status(400).json({error: err.message})
+    }
 
 }
 
@@ -24,9 +45,18 @@ const CreateWorkout = (req, res) => {
 // @desc get single workout detail
 // @method GET
 // @route '/:id', Private
-const workoutDetail = (req, res) => {
+const workoutDetail = async (req, res) => {
 
-    res.json({message: "single workout"})
+    const id = req.params.id;
+
+    try {
+        const workout = await Workout.findById(id)
+
+        res.status(200).json(workout)
+        
+    } catch (err) {
+        res.status(400).json({error: err.message})
+    }
 
 }
 
