@@ -6,20 +6,12 @@ const Workout = require('../models/workoutModel')
 // @method GET
 // @route '/', Private
 const AllWorkouts = async (req, res) => {
-
-
     try {
-        const workouts = await Workout.find()
-
-        
-
+        const workouts = await Workout.find().sort({createdAt: -1})
         res.json(workouts);
     } catch (err) {   
         res.status(400).json({error: err.message})
     }
-   
-   
-    
 }
 
 
@@ -31,7 +23,6 @@ const CreateWorkout = async (req, res) => {
     const { title, load, reps } = req.body;
 
     try {
-
         const workout = await Workout.create({title, load, reps })
         res.status(200).json(workout)
         
@@ -39,7 +30,6 @@ const CreateWorkout = async (req, res) => {
         res.status(400).json({error: err.message})
     }
 
-}
 
 
 // @desc get single workout detail
@@ -65,6 +55,7 @@ const workoutDetail = async (req, res) => {
 // @method PATCH
 // @route '/:id', Private
 const updateWorkout = (req, res) => {
+
     res.json({message: "Update workout"})
 
 }
