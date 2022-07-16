@@ -1,5 +1,6 @@
 const express = require('express');
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv').config();
+const cors = require('cors');
 
 const workoutRoutes = require('./routes/workoutRoute');
 const connectDB = require('./config/db');
@@ -14,6 +15,8 @@ const app = express();
 connectDB();
 
 app.use(express.json())
+
+app.use(cors())
 
 // middleware
 app.use((req, res, next) => {

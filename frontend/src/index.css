@@ -20,6 +20,7 @@ html {
 body {
   box-sizing: border-box;
   color: #333;
+  font-size: 1.6rem;
 }
 
 a {
@@ -44,6 +45,30 @@ a {
 
 .container {
   background-color: rgb(197, 188, 188);
-  height: 100vh;
+  height: 100%;
   padding: 4rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
+.workouts {
+  grid-column: span 2;
+
+}
+.details {
+  padding: 2rem 3rem;
+  margin-bottom: 3rem;
+  transition: all .3s;
+  box-shadow: .1rem .2rem .4rem rgba(0,0,0,0.8);
+  background-color: #eee;
+  border-radius: 1rem;
+}
+
+.details:hover {
+  
+  box-shadow: .2rem .4rem .8rem rgba(0,0,0,0.8);
+}
+
+.details h4 {
+  text-transform: capitalize;
+}
+
