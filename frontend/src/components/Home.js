@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import WorkoutDetails from './WorkoutDetails';
 import WorkoutForm from './WorkoutForm';
 

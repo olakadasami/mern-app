@@ -44,7 +44,7 @@ a {
 }
 
 .container {
-  background-color: rgb(197, 188, 188);
+  background-color: #fff;
   height: 100%;
   padding: 4rem 3rem;
   display: grid;
